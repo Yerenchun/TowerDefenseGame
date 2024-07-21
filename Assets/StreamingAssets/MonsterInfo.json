@@ -1,0 +1,18 @@
+[
+    {"id":1,"modelRes":"Monster/Z1","animatorRes":"Animator/Monster/Aggresive","atk":5,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkInterval":0.8},
+    {"id":2,"modelRes":"Monster/Z2","animatorRes":"Animator/Monster/Broken","atk":5,"moveSpeed":3,"roundSpeed":50,"hp":10,"atkInterval":1.2},
+    {"id":3,"modelRes":"Monster/Z3","animatorRes":"Animator/Monster/Calm","atk":5,"moveSpeed":3.5,"roundSpeed":60,"hp":10,"atkInterval":1},
+    {"id":4,"modelRes":"Monster/Z4","animatorRes":"Animator/Monster/Crawl","atk":5,"moveSpeed":3,"roundSpeed":150,"hp":10,"atkInterval":0.5},
+    {"id":5,"modelRes":"Monster/Z1","animatorRes":"Animator/Monster/Broken","atk":5,"moveSpeed":3.5,"roundSpeed":100,"hp":10,"atkInterval":0.8},
+    {"id":6,"modelRes":"Monster/Z2","animatorRes":"Animator/Monster/Aggresive","atk":5,"moveSpeed":3.5,"roundSpeed":100,"hp":10,"atkInterval":0.8},
+    {"id":7,"modelRes":"Monster/Z3","animatorRes":"Animator/Monster/Crawl","atk":5,"moveSpeed":3.5,"roundSpeed":100,"hp":10,"atkInterval":0.8},
+    {"id":8,"modelRes":"Monster/Z4","animatorRes":"Animator/Monster/Calm","atk":5,"moveSpeed":3,"roundSpeed":50,"hp":10,"atkInterval":1.2},
+    {"id":9,"modelRes":"Monster/Z1","animatorRes":"Animator/Monster/Crawl","atk":5,"moveSpeed":3.5,"roundSpeed":60,"hp":10,"atkInterval":1},
+    {"id":10,"modelRes":"Monster/Z2","animatorRes":"Animator/Monster/Calm","atk":5,"moveSpeed":3.5,"roundSpeed":150,"hp":10,"atkInterval":0.5},
+    {"id":11,"modelRes":"Monster/Z3","animatorRes":"Animator/Monster/Broken","atk":5,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkInterval":0.8},
+    {"id":12,"modelRes":"Monster/Z4","animatorRes":"Animator/Monster/Aggresive","atk":5,"moveSpeed":3.5,"roundSpeed":40,"hp":10,"atkInterval":0.8},
+    {"id":13,"modelRes":"Monster/Z5","animatorRes":"Animator/Monster/Aggresive","atk":5,"moveSpeed":3,"roundSpeed":100,"hp":10,"atkInterval":0.8},
+    {"id":14,"modelRes":"Monster/Z5","animatorRes":"Animator/Monster/Broken","atk":5,"moveSpeed":3,"roundSpeed":50,"hp":10,"atkInterval":1.2},
+    {"id":15,"modelRes":"Monster/Z5","animatorRes":"Animator/Monster/Calm","atk":5,"moveSpeed":3.5,"roundSpeed":60,"hp":10,"atkInterval":1},
+    {"id":16,"modelRes":"Monster/Z5","animatorRes":"Animator/Monster/Crawl","atk":5,"moveSpeed":3.5,"roundSpeed":150,"hp":10,"atkInterval":0.5}
+    ]
