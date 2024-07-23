@@ -37,6 +37,9 @@ public class GamePanel : BasePanel
 
         // 没有到达造塔点，应该隐藏造塔的按钮
         botTrans.gameObject.SetActive(false);
+
+        // 更改鼠标锁定的状态
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     #endregion

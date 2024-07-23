@@ -41,7 +41,12 @@ public class MainTower : MonoBehaviour
         {
             hp = 0;
             isDead = true;
-            // TODO 游戏结束
+            // 游戏失败结束
+            // 显示游戏结束界面
+            // 得到玩家获得的钱
+            // 失败只获得一半的钱
+            int money = (int)(GameLevelMgr.Instance.player.money * 0.5f);
+            UIManager.Instance.ShowPanel<GameOverPanel>().SetInfo(money, false);
         }
 
         // 更新UI界面血量的显示

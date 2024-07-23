@@ -7,6 +7,8 @@ public class GameLevelMgr
     // 单例模式
     private static GameLevelMgr instance = new GameLevelMgr();
     public static GameLevelMgr Instance { get { return instance; } }
+    #region 关卡数据
+
     // 当前角色的控制脚本
     public PlayerController player;
 
@@ -19,6 +21,8 @@ public class GameLevelMgr
 
     // 记录当前场景中的怪物数量
     private int nowMonsterNum = 0;
+
+    #endregion
 
     private GameLevelMgr() { }
 
@@ -105,6 +109,18 @@ public class GameLevelMgr
         nowMonsterNum += num;
     }
 
-
     #endregion
+
+    #region 清除数据
+    /// <summary>
+    /// 因为是单例模式，切换场景不会被移除，所以要手动清除数据
+    /// 避免，下一次进入关卡仍然有上一次的数据
+    /// </summary>
+    public void ClearData() { 
+        bornPoints.Clear(); 
+        nowWaveNum = allWaveNum = nowMonsterNum = 0;
+        player = null;
+    }
+    #endregion
+
 }
