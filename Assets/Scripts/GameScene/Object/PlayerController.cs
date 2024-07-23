@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class    PlayerController : MonoBehaviour
 {
     private Animator playerAnimator;
 
@@ -80,7 +80,14 @@ public class PlayerController : MonoBehaviour
                                      1f, 1 << LayerMask.NameToLayer("Monster"));
         for (int i = 0; i < colliders.Length; i++)
         {
-            // TODO: 对怪物造成伤害
+            // 对怪物造成伤害
+            MonsterObj monster =  colliders[i].GetComponent<MonsterObj>();
+            if(monster != null)
+            {
+                // 只让一个对象受伤
+                monster.TakeDamage(this.atk);
+                break;
+            }
         }
     }
 
@@ -94,7 +101,17 @@ public class PlayerController : MonoBehaviour
         RaycastHit[] hits= Physics.RaycastAll(firePoint.position, firePoint.forward, 100f, 
                 1 << LayerMask.NameToLayer("Monster"));
 
-            // TODO: 对怪物造成伤害
+        // 对怪物造成伤害
+        for(int i = 0; i < hits.Length; i++)
+        {
+            MonsterObj monster = hits[i].collider.GetComponent<MonsterObj>();
+            if(monster != null)
+            {
+                // 只让一个对象受伤
+                monster.TakeDamage(this.atk);
+                break;
+            }
+        }
         
     }
 

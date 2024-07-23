@@ -132,7 +132,10 @@ public class ChooseHeroPanel : BasePanel
         // 实例化角色，记录下来，用于后续切换的时候删除
         heroObj = GameObject.Instantiate(Resources.Load<GameObject>(nowRoleInfo.res), heroPos.position, heroPos.rotation);
         // 设置角色的父对象，TODO方便后面可能，做鼠标拖动查看角色
-        heroObj.transform.SetParent(heroPos, true);
+        // heroObj.transform.SetParent(heroPos, true);
+        // 游戏在玩家对象上挂载了PlayerController脚本，但是选角界面是用不到的
+        // 所以这里要删除这个脚本
+        Destroy(heroObj.GetComponent<PlayerController>());
 
         // 根据解锁相关数据，来决定是否显示解锁按钮
         UpdateLock();

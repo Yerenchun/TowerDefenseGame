@@ -29,6 +29,11 @@ public class MonsterBirthPlace : MonoBehaviour
     {
         // 开启延迟函数，创建第一波怪物
         Invoke("CreateWave", firstWaveInterval);
+
+        // 将当前刷怪点，添加到关卡管理中
+        GameLevelMgr.Instance.AddBornPoint(this);
+        // 更新最大波数，加上当前刷怪点的最大波数
+        GameLevelMgr.Instance.UpdateMaxNum(maxMonsterWave);
     }
 
     #region 刷怪
@@ -49,6 +54,9 @@ public class MonsterBirthPlace : MonoBehaviour
 
         // 减少波次
         --maxMonsterWave;
+        // 更新UI界面当前波数
+        // 通知减少了一波怪物
+        GameLevelMgr.Instance.ChangeNowWaveNum(1);
     }
 
     /// <summary>
@@ -67,6 +75,8 @@ public class MonsterBirthPlace : MonoBehaviour
 
         // 当前波怪物剩余数量 -1
         --nowMonsterCount;
+        // 告诉关卡管理器，场景当中的怪物数量+1
+        GameLevelMgr.Instance.ChangeNowMonsterNum(1);
 
         if(nowMonsterCount == 0)
         {

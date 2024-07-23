@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChooseScenePanel : BasePanel
@@ -25,7 +26,14 @@ public class ChooseScenePanel : BasePanel
         btnStart.onClick.AddListener(()=>{
             // 隐藏当前面板
             UIManager.Instance.HidePanel<ChooseScenePanel>();
-            // TODO加载游戏场景开始游戏
+            // 加载游戏场景开始游戏
+            // 保险起见，使用异步加载
+            AsyncOperation ao = SceneManager.LoadSceneAsync(nowSceneInfo.sceneName);
+            // 异步加载完成再调用，就不会报空了
+            ao.completed += (AsyncOperation obj) => {
+                // 关卡管理进行初始化
+                GameLevelMgr.Instance.InitInfo(nowSceneInfo);
+            };
         });
 
         btnRight.onClick.AddListener(()=>{

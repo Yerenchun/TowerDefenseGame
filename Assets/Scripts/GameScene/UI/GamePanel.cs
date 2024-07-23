@@ -69,7 +69,7 @@ public class GamePanel : BasePanel
     /// </summary>
     /// <param name="count"></param>
     /// <param name="maxCount"></param>
-    public void UpdateCount(int count, int maxCount) { 
+    public void UpdateWaveNum(int count, int maxCount) { 
         txtCount.text = count + "/" + maxCount; 
     }
 

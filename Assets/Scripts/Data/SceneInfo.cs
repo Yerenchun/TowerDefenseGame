@@ -7,4 +7,6 @@ public class SceneInfo{
     public string name;
     public string sceneName;
     public string tips;
+    public int money;
+    public int towerHp;
 }
