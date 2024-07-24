@@ -53,6 +53,9 @@ public class    PlayerController : MonoBehaviour
         // 攻击
         if(Input.GetMouseButtonDown(0)) {
             playerAnimator.SetTrigger("Fire");
+
+            // TODO创建子弹特效
+
         }
 
         // 是否下蹲
@@ -78,6 +81,10 @@ public class    PlayerController : MonoBehaviour
         // 对怪物层进行范围伤害检测
         Collider[] colliders =  Physics.OverlapSphere(this.transform.position + this.transform.forward + this.transform.up,
                                      1f, 1 << LayerMask.NameToLayer("Monster"));
+        // 播放刺刀攻击音效
+        GameDataManager.Instance.PlaySound("Music/Knife");
+        // 对怪物造成伤害
+
         for (int i = 0; i < colliders.Length; i++)
         {
             // 对怪物造成伤害
@@ -100,6 +107,8 @@ public class    PlayerController : MonoBehaviour
         // 获取相交的多个物体
         RaycastHit[] hits= Physics.RaycastAll(firePoint.position, firePoint.forward, 100f, 
                 1 << LayerMask.NameToLayer("Monster"));
+        // 播放开枪攻击音效
+        GameDataManager.Instance.PlaySound("Music/Gun");
 
         // 对怪物造成伤害
         for(int i = 0; i < hits.Length; i++)
@@ -107,12 +116,18 @@ public class    PlayerController : MonoBehaviour
             MonsterObj monster = hits[i].collider.GetComponent<MonsterObj>();
             if(monster != null)
             {
+
+                // 打击特效的创建
+                GameObject effObj = Instantiate(Resources.Load<GameObject>(GameDataManager.Instance.nowSelfInfo.hitEff));
+                effObj.transform.position = hits[i].point;
+                effObj.transform.rotation = Quaternion.LookRotation(hits[i].normal);
+                Destroy(effObj, 1f);
+
                 // 只让一个对象受伤
                 monster.TakeDamage(this.atk);
                 break;
             }
         }
-        
     }
 
     #endregion

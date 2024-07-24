@@ -64,7 +64,24 @@ public class GameDataManager
         JsonMgr.Instance.SaveData(playerData, "PlayerData");
     }
 
+    #endregion
 
+    #region 音效管理
+    /// <summary>
+    /// 播放音效
+    /// </summary>
+    /// <param name="resName"></param>
+    public void PlaySound(string resName){
+        GameObject musicObj = new GameObject();
+        AudioSource audioSource = musicObj.AddComponent<AudioSource>();
+        audioSource.clip = Resources.Load<AudioClip>(resName);
+        audioSource.volume = musicData.SEValue;
+        audioSource.mute = !musicData.isPlaySE;
+
+        audioSource.Play();
+        // 播放完就销毁
+        GameObject.Destroy(musicObj, audioSource.clip.length);
+    }
     #endregion
 
 }

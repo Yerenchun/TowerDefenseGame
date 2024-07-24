@@ -113,6 +113,10 @@ public class MonsterObj : MonoBehaviour
         // 尽管只需要检测一个东西，但是范围检测返回的就是数组
         Collider[] colliders = Physics.OverlapSphere(this.transform.position + this.transform.forward + this.transform.up, 1,
                         1 << LayerMask.NameToLayer("MainTower"));
+
+        // 播放怪物攻击音效
+        GameDataManager.Instance.PlaySound("Music/Eat");
+        
         for(int i = 0; i < colliders.Length; i++)
         {
             if(colliders[i].gameObject == MainTower.Instance.gameObject)
@@ -132,7 +136,9 @@ public class MonsterObj : MonoBehaviour
     {
         hp -= damage;
         animator.SetTrigger("Wound");
-        // TODO 播放音效
+        // 播放音效
+        GameDataManager.Instance.PlaySound("Music/Wound");
+
         if (hp <= 0)
         {
             // 死亡
@@ -148,6 +154,8 @@ public class MonsterObj : MonoBehaviour
         agent.isStopped = true;
         // 播放动画
         animator.SetBool("IsDead", isDead);
+        // 播放死亡音效
+        GameDataManager.Instance.PlaySound("Music/dead");
 
         // TODO加钱
         // 通过关卡管理类，来管理游戏中的对象，通过它来让玩家加钱
