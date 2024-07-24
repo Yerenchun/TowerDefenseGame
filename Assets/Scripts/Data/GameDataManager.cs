@@ -26,6 +26,9 @@ public class GameDataManager
     // 怪物数据列表
     public List<MonsterInfo> monsterInfoList;
 
+    // 炮塔数据列表
+    public List<TowerInfo> towerInfoList;
+
 
 
     #endregion
@@ -43,6 +46,8 @@ public class GameDataManager
         sceneInfoList = JsonMgr.Instance.LoadData<List<SceneInfo>>("SceneInfo");
         // 从Json文件中，加载怪物数据
         monsterInfoList = JsonMgr.Instance.LoadData<List<MonsterInfo>>("MonsterInfo");
+        // 初始化炮塔数据列表
+        towerInfoList = JsonMgr.Instance.LoadData<List<TowerInfo>>("TowerInfo");
     }
     #endregion
 
