@@ -20,7 +20,10 @@ public class GameLevelMgr
     private int allWaveNum = 0;
 
     // 记录当前场景中的怪物数量
-    private int nowMonsterNum = 0;
+    // private int nowMonsterNum = 0;
+    // 记录当前场景上的怪物的列表
+    private List<MonsterObj> monsterList = new List<MonsterObj>();
+
 
     #endregion
 
@@ -97,7 +100,7 @@ public class GameLevelMgr
         // 是不是可以通过nowWaveNum也可以判断是否还有剩余怪物需要刷
 
         // 判断当前场景中是否还有怪物
-        if(nowMonsterNum > 0)
+        if(monsterList.Count> 0)
             return false;
         Debug.Log("胜利");
         return true;
@@ -105,9 +108,70 @@ public class GameLevelMgr
 
     // 记录场景上怪物的数量
     // 创建怪物的时候就+1，怪物死亡就-1
-    public void ChangeNowMonsterNum(int num){
-        nowMonsterNum += num;
+    // public void ChangeNowMonsterNum(int num){
+    //     nowMonsterNum += num;
+    // }
+
+    #region 怪物列表
+
+    /// <summary>
+    /// 每创建一只怪物就向列表中添加怪物
+    /// </summary>
+    /// <param name="monster"></param>
+    public void AddMonsterToList(MonsterObj monster) { 
+        monsterList.Add(monster); 
     }
+
+    // 移除该怪物
+    public void RemoveMonsterFromList(MonsterObj monster) { 
+        monsterList.Remove(monster); 
+    }
+
+    /// <summary>
+    /// 遍历查找符合距离的单个怪物
+    /// </summary>
+    /// <param name="pos">炮塔的位置</param>
+    /// <param name="Range">炮塔的攻击范围</param>
+    /// <returns></returns>
+    public MonsterObj FindMonster(Vector3 pos, float Range)
+    {
+        // 在怪物列表中，找到满足距离条件的怪物 返回出去 用于塔攻击
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            // 并且是没有死亡的怪物
+            if ( !monsterList[i].isDead && Vector3.Distance(monsterList[i].transform.position, pos) <= Range)
+                return monsterList[i];
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// 遍历查找符合距离的怪物列表
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="Range"></param>
+    /// <returns>怪物列表</returns>
+    public List<MonsterObj> FindMonsters(Vector3 pos, float Range) 
+    {
+        // 在怪物列表中，找到满足距离条件的所有怪物 返回出去 用于塔攻击
+        return monsterList.FindAll(m => 
+            !m.isDead && Vector3.Distance(m.transform.position, pos) <= Range
+        );
+
+        // 两段代码作用相同
+        // List<MonsterObj> monsters = new List<MonsterObj>();
+        // for (int i = 0; i < monsterList.Count; i++)
+        // {
+        //     // 并且是没有死亡的怪物
+        //     if (!monsterList[i].isDead && Vector3.Distance(monsterList[i].transform.position, pos) <= Range)
+        //         monsters.Add(monsterList[i]);
+        // }
+        // return monsters;
+    }
+
+
+    #endregion
+
 
     #endregion
 
@@ -117,8 +181,9 @@ public class GameLevelMgr
     /// 避免，下一次进入关卡仍然有上一次的数据
     /// </summary>
     public void ClearData() { 
-        bornPoints.Clear(); 
-        nowWaveNum = allWaveNum = nowMonsterNum = 0;
+        bornPoints.Clear();
+        monsterList.Clear();
+        nowWaveNum = allWaveNum = 0;
         player = null;
     }
     #endregion

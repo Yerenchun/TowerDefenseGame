@@ -166,8 +166,8 @@ public class MonsterObj : MonoBehaviour
     {
         // 死亡动画播放完后，移除该对象
         // 之后使用关卡管理器来处理
-        // 怪物死亡当前场景上，怪物的数量就-1
-        GameLevelMgr.Instance.ChangeNowMonsterNum(-1);
+        // 怪物死亡当前场景上，记录的怪物就-1
+        GameLevelMgr.Instance.RemoveMonsterFromList(this);
         Destroy(this.gameObject);
 
         // 检测游戏是否胜利
@@ -177,7 +177,6 @@ public class MonsterObj : MonoBehaviour
             // 将获得的钱，全部给玩家
             UIManager.Instance.ShowPanel<GameOverPanel>().SetInfo(GameLevelMgr.Instance.player.money, true);
         }
-
     }
 
     #endregion

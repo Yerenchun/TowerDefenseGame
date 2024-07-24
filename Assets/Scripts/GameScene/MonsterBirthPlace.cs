@@ -75,8 +75,9 @@ public class MonsterBirthPlace : MonoBehaviour
 
         // 当前波怪物剩余数量 -1
         --nowMonsterCount;
-        // 告诉关卡管理器，场景当中的怪物数量+1
-        GameLevelMgr.Instance.ChangeNowMonsterNum(1);
+        // 关卡管理器，记录的场景当中的怪物数量+1
+        GameLevelMgr.Instance.AddMonsterToList(monster);
+        // GameLevelMgr.Instance.ChangeNowMonsterNum(1);
 
         if(nowMonsterCount == 0)
         {

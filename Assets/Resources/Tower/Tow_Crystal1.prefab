@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5154954916884771450}
   - component: {fileID: 223537836943399742}
+  - component: {fileID: 8970146905099380843}
   m_Layer: 0
   m_Name: Tow_Crystal1
   m_TagString: Untagged
@@ -54,6 +55,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8970146905099380843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223521069556066917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61531f31557201b4c8dac435280c274c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 0}
+  gunPoint: {fileID: 0}
+  headRotateSpeed: 5
 --- !u!1 &7197476673760083650
 GameObject:
   m_ObjectHideFlags: 0
